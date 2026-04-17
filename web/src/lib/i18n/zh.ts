@@ -33,6 +33,7 @@ const zh: Record<string, string> = {
   // Impersonate banner
   'impersonate.banner': '正在模拟 <strong>{email}</strong>（角色: {role}）',
   'impersonate.stop': '停止模拟',
+  'impersonate.stopFailed': '停止模拟失败: {error}',
 
   // Login
   'login.title': 'GTM DNS',

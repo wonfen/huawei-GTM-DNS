@@ -33,6 +33,7 @@ const en: Record<string, string> = {
   // Impersonate banner
   'impersonate.banner': 'Impersonating <strong>{email}</strong> (acting as {role})',
   'impersonate.stop': 'Stop Impersonating',
+  'impersonate.stopFailed': 'Stop impersonating failed: {error}',
 
   // Login
   'login.title': 'GTM DNS',
