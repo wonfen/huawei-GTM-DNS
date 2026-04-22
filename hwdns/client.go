@@ -151,7 +151,7 @@ func (c *Client) do(ctx context.Context, method, path string, in, out any) error
 
 	if resp.StatusCode >= 400 {
 		body, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("huawei api error: status %d, body: %s", resp.StatusCode, string(body))
+		return &APIError{StatusCode: resp.StatusCode, Body: string(body)}
 	}
 
 	if out != nil && resp.StatusCode != http.StatusNoContent {
