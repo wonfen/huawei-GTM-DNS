@@ -136,6 +136,12 @@ const en: Record<string, string> = {
   'accounts.addEndpoint': '+ Add endpoint',
   'accounts.endpointCount': '{n} endpoints',
   'accounts.onePrimaryRequired': 'Exactly one endpoint must be primary',
+  'accounts.validation.nameRequired': 'Enter an account name',
+  'accounts.validation.akRequired': 'Enter the Access Key (AK)',
+  'accounts.validation.skRequired': 'Enter the Secret Key (SK)',
+  'accounts.validation.endpointRequired': 'Enter an endpoint URL',
+  'accounts.validation.apiKeyRequired': 'Enter an API Key',
+  'accounts.validation.onePrimaryRequired': 'Exactly one endpoint must be primary',
 
   // Reconcile / Drift
   'reconcile.checkSync': 'Check sync',

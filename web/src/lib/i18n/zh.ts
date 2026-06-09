@@ -136,6 +136,12 @@ const zh: Record<string, string> = {
   'accounts.addEndpoint': '+ 添加端点',
   'accounts.endpointCount': '{n} 个端点',
   'accounts.onePrimaryRequired': '必须且仅有一个主端点',
+  'accounts.validation.nameRequired': '请输入账户名称',
+  'accounts.validation.akRequired': '请输入 Access Key (AK)',
+  'accounts.validation.skRequired': '请输入 Secret Key (SK)',
+  'accounts.validation.endpointRequired': '请输入端点 URL',
+  'accounts.validation.apiKeyRequired': '请输入 API Key',
+  'accounts.validation.onePrimaryRequired': '必须且仅有一个主端点',
 
   // Reconcile / Drift
   'reconcile.checkSync': '检查同步',
