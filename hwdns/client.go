@@ -8,6 +8,8 @@ import (
 	"io"
 	"net/http"
 	"time"
+
+	"gtm-dns/internal/service/dnsprovider"
 )
 
 type Client struct {
@@ -26,7 +28,7 @@ func NewClient(ak, sk, endpoint string) *Client {
 
 const pageSize = 500
 
-func (c *Client) ListZones(ctx context.Context) ([]Zone, error) {
+func (c *Client) ListZones(ctx context.Context) ([]dnsprovider.Zone, error) {
 	var all []Zone
 	offset := 0
 	for {
@@ -41,15 +43,15 @@ func (c *Client) ListZones(ctx context.Context) ([]Zone, error) {
 		}
 		offset += len(resp.Zones)
 	}
-	return all, nil
+	return toProviderZones(all), nil
 }
 
-func (c *Client) CreateZone(ctx context.Context, req CreateZoneRequest) (Zone, error) {
+func (c *Client) CreateZone(ctx context.Context, req dnsprovider.CreateZoneRequest) (dnsprovider.Zone, error) {
 	var resp Zone
-	if err := c.post(ctx, "/v2/zones", req, &resp); err != nil {
-		return Zone{}, err
+	if err := c.post(ctx, "/v2/zones", fromProviderCreateZoneReq(req), &resp); err != nil {
+		return dnsprovider.Zone{}, err
 	}
-	return resp, nil
+	return toProviderZone(resp), nil
 }
 
 func (c *Client) DeleteZone(ctx context.Context, zoneID string) error {
@@ -57,7 +59,7 @@ func (c *Client) DeleteZone(ctx context.Context, zoneID string) error {
 	return c.do(ctx, http.MethodDelete, path, nil, nil)
 }
 
-func (c *Client) ListRecordSets(ctx context.Context, zoneID string) ([]RecordSet, error) {
+func (c *Client) ListRecordSets(ctx context.Context, zoneID string) ([]dnsprovider.RecordSet, error) {
 	var all []RecordSet
 	offset := 0
 	for {
@@ -72,7 +74,7 @@ func (c *Client) ListRecordSets(ctx context.Context, zoneID string) ([]RecordSet
 		}
 		offset += len(resp.Recordsets)
 	}
-	return all, nil
+	return toProviderRecordSets(all), nil
 }
 
 // SetRecordSetStatus enables or disables a record set via the dedicated Huawei
@@ -91,22 +93,22 @@ func (c *Client) DeleteRecordSet(ctx context.Context, zoneID, recordSetID string
 	return c.do(ctx, http.MethodDelete, path, nil, nil)
 }
 
-func (c *Client) UpdateRecordSet(ctx context.Context, zoneID, id string, req UpdateRecordSetRequest) (RecordSet, error) {
+func (c *Client) UpdateRecordSet(ctx context.Context, zoneID, id string, req dnsprovider.UpdateRecordSetRequest) (dnsprovider.RecordSet, error) {
 	var resp RecordSet
 	path := fmt.Sprintf("/v2.1/zones/%s/recordsets/%s", zoneID, id)
-	if err := c.put(ctx, path, req, &resp); err != nil {
-		return RecordSet{}, err
+	if err := c.put(ctx, path, fromProviderUpdateReq(req), &resp); err != nil {
+		return dnsprovider.RecordSet{}, err
 	}
-	return resp, nil
+	return toProviderRecordSet(resp), nil
 }
 
-func (c *Client) CreateRecordSet(ctx context.Context, zoneID string, req CreateRecordSetRequest) (RecordSet, error) {
+func (c *Client) CreateRecordSet(ctx context.Context, zoneID string, req dnsprovider.CreateRecordSetRequest) (dnsprovider.RecordSet, error) {
 	var resp RecordSet
 	path := fmt.Sprintf("/v2.1/zones/%s/recordsets", zoneID)
-	if err := c.post(ctx, path, req, &resp); err != nil {
-		return RecordSet{}, err
+	if err := c.post(ctx, path, fromProviderCreateReq(req), &resp); err != nil {
+		return dnsprovider.RecordSet{}, err
 	}
-	return resp, nil
+	return toProviderRecordSet(resp), nil
 }
 
 func (c *Client) get(ctx context.Context, path string, out any) error {
@@ -151,7 +153,7 @@ func (c *Client) do(ctx context.Context, method, path string, in, out any) error
 
 	if resp.StatusCode >= 400 {
 		body, _ := io.ReadAll(resp.Body)
-		return &APIError{StatusCode: resp.StatusCode, Body: string(body)}
+		return &dnsprovider.APIError{StatusCode: resp.StatusCode, Body: string(body)}
 	}
 
 	if out != nil && resp.StatusCode != http.StatusNoContent {

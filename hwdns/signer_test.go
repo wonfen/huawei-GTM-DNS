@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wonfen/huawei-GTM-DNS/hwdns"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/wonfen/huawei-GTM-DNS/hwdns"
 )
 
 func TestSigner(t *testing.T) {

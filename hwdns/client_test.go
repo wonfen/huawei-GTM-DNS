@@ -7,9 +7,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/wonfen/huawei-GTM-DNS/hwdns"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"gtm-dns/internal/service/dnsprovider"
+	"github.com/wonfen/huawei-GTM-DNS/hwdns"
 )
 
 func TestListZones(t *testing.T) {
@@ -28,6 +29,7 @@ func TestListZones(t *testing.T) {
 	zones, err := client.ListZones(context.Background())
 	require.NoError(t, err)
 	require.Len(t, zones, 1)
+	assert.IsType(t, dnsprovider.Zone{}, zones[0])
 	assert.Equal(t, "z1", zones[0].ID)
 	assert.Equal(t, "example.com.", zones[0].Name)
 }
@@ -50,6 +52,7 @@ func TestListRecordSets(t *testing.T) {
 	records, err := client.ListRecordSets(context.Background(), "z1")
 	require.NoError(t, err)
 	require.Len(t, records, 1)
+	assert.IsType(t, dnsprovider.RecordSet{}, records[0])
 	assert.Equal(t, "r1", records[0].ID)
 	assert.Equal(t, "default_view", records[0].Line)
 }
@@ -152,13 +155,14 @@ func TestUpdateRecordSet(t *testing.T) {
 	defer srv.Close()
 
 	client := hwdns.NewClient("test-ak", "test-sk", srv.URL)
-	updated, err := client.UpdateRecordSet(context.Background(), "z1", "r1", hwdns.UpdateRecordSetRequest{
+	updated, err := client.UpdateRecordSet(context.Background(), "z1", "r1", dnsprovider.UpdateRecordSetRequest{
 		Name:    "api.example.com.",
 		Type:    "A",
 		TTL:     600,
 		Records: []string{"5.6.7.8"},
 	})
 	require.NoError(t, err)
+	assert.IsType(t, dnsprovider.RecordSet{}, updated)
 	assert.Equal(t, []string{"5.6.7.8"}, updated.Records)
 	assert.Equal(t, "api.example.com.", capturedBody.Name)
 	assert.Equal(t, 600, capturedBody.TTL)
