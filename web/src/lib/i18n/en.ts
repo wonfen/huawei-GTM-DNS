@@ -239,6 +239,7 @@ const en: Record<string, string> = {
   'records.groupCreateFailed': 'Create failed: {error}',
   'records.joinedGroup': 'Joined group',
   'records.probeConfigFailed': 'Failed to update probe config: {error}',
+  'record.disabledValueTip': 'Disabled value — preserved but not served',
 
   // Column labels
   'col.probes': 'Probes',

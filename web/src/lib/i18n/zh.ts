@@ -239,6 +239,7 @@ const zh: Record<string, string> = {
   'records.groupCreateFailed': '创建失败: {error}',
   'records.joinedGroup': '已加入组',
   'records.probeConfigFailed': '探针配置更新失败: {error}',
+  'record.disabledValueTip': '已禁用值——保留但不解析',
 
   // Column labels
   'col.probes': '探针',
