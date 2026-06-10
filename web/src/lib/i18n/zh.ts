@@ -3,6 +3,7 @@ const zh: Record<string, string> = {
   'common.loading': '加载中...',
   'common.save': '保存',
   'common.cancel': '取消',
+  'common.close': '关闭',
   'common.delete': '删除',
   'common.edit': '编辑',
   'common.create': '创建',
@@ -455,6 +456,21 @@ const zh: Record<string, string> = {
   'groupCard.setDefault': '设为默认',
   'groupCard.serving': '\u2713 服务中',
   'groupCard.onePerLine': '每行一个',
+
+  // Import from Huawei
+  'import.button': '从华为云导入',
+  'import.title': '从华为云 zone 导入解析记录',
+  'import.sourceAccount': '华为云账号',
+  'import.sourceZone': '源 zone',
+  'import.selectAccount': '选择账号…',
+  'import.selectZone': '选择 zone…',
+  'import.run': '导入',
+  'import.running': '导入中…',
+  'import.done': '导入完成',
+  'import.sourceRows': '条源记录',
+  'import.failed': '失败',
+  'import.skipped': '跳过',
+  'import.noZones': '该账号下还没有 zone，请先同步该账号的 zone。',
 };
 
 export default zh;

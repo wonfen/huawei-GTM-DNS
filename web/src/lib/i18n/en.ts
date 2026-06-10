@@ -3,6 +3,7 @@ const en: Record<string, string> = {
   'common.loading': 'Loading...',
   'common.save': 'Save',
   'common.cancel': 'Cancel',
+  'common.close': 'Close',
   'common.delete': 'Delete',
   'common.edit': 'Edit',
   'common.create': 'Create',
@@ -455,6 +456,21 @@ const en: Record<string, string> = {
   'groupCard.setDefault': 'Set default',
   'groupCard.serving': '\u2713 Serving',
   'groupCard.onePerLine': 'one per line',
+
+  // Import from Huawei
+  'import.button': 'Import from Huawei',
+  'import.title': 'Import records from a Huawei zone',
+  'import.sourceAccount': 'Huawei account',
+  'import.sourceZone': 'Source zone',
+  'import.selectAccount': 'Select an account…',
+  'import.selectZone': 'Select a zone…',
+  'import.run': 'Import',
+  'import.running': 'Importing…',
+  'import.done': 'Import finished',
+  'import.sourceRows': 'source rows',
+  'import.failed': 'Failed',
+  'import.skipped': 'Skipped',
+  'import.noZones': 'No zones in this account yet — sync its zones first.',
 };
 
 export default en;
