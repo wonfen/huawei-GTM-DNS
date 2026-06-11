@@ -241,6 +241,10 @@ const zh: Record<string, string> = {
   'records.joinedGroup': '已加入组',
   'records.probeConfigFailed': '探针配置更新失败: {error}',
   'record.disabledValueTip': '已禁用值——保留但不解析',
+  'record.manualPaused': '手动暂停',
+  'record.manualPausedTip': '用户手动暂停——健康检测不会自动恢复该记录',
+  'record.autoDisabled': '自动禁用',
+  'record.autoDisabledTip': '健康检测自动禁用——所有 IP 恢复健康后自动重新启用',
 
   // Column labels
   'col.probes': '探针',

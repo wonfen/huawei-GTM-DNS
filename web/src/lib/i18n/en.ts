@@ -241,6 +241,10 @@ const en: Record<string, string> = {
   'records.joinedGroup': 'Joined group',
   'records.probeConfigFailed': 'Failed to update probe config: {error}',
   'record.disabledValueTip': 'Disabled value — preserved but not served',
+  'record.manualPaused': 'Paused (manual)',
+  'record.manualPausedTip': 'Manually paused by a user — health checks will NOT re-enable it',
+  'record.autoDisabled': 'Disabled (auto)',
+  'record.autoDisabledTip': 'Auto-disabled by health checks — re-enables automatically once all IPs recover',
 
   // Column labels
   'col.probes': 'Probes',
