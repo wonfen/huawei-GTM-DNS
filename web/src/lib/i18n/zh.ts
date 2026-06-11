@@ -214,6 +214,7 @@ const zh: Record<string, string> = {
   'records.line': '线路',
   'records.weight': '权重',
   'records.weightPlaceholder': '可选',
+  'records.pdnsWeightHint': '同名同类型同线路的多条记录构成一组加权解析，命中的记录整组 IP 一起返回；TTL 建议保持 60。',
   'records.loadingRecords': '加载记录中...',
   'records.loadFailed': '加载记录失败',
   'records.grouped': '已分组',

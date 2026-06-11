@@ -214,6 +214,7 @@ const en: Record<string, string> = {
   'records.line': 'Line',
   'records.weight': 'Weight',
   'records.weightPlaceholder': 'optional',
+  'records.pdnsWeightHint': 'Records sharing a name, type and line form one weighted set; the matched record answers all its IPs together. Keep TTL at 60.',
   'records.loadingRecords': 'Loading records...',
   'records.loadFailed': 'Failed to load records',
   'records.grouped': 'Grouped',
