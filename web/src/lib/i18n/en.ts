@@ -242,6 +242,7 @@ const en: Record<string, string> = {
   'records.columns': 'Columns',
   'records.showHideColumns': 'Show / Hide Columns',
   'records.onePerLine': 'one value per line',
+  'records.soaSerialHint': 'SOA format: mname rname serial refresh retry expire minimum. The serial is re-managed by PowerDNS on save — the value you enter may be overwritten.',
   'records.joinGroup': 'Join group...',
   'records.synced': 'Records synced',
   'records.syncFailed': 'Sync failed: {error}',

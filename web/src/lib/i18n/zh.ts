@@ -242,6 +242,7 @@ const zh: Record<string, string> = {
   'records.columns': '列设置',
   'records.showHideColumns': '显示 / 隐藏列',
   'records.onePerLine': '每行一个',
+  'records.soaSerialHint': 'SOA 格式：mname rname serial refresh retry expire minimum。serial 由 PowerDNS 在保存时自动管理——你填的值可能被覆盖。',
   'records.joinGroup': '加入组...',
   'records.synced': '记录已同步',
   'records.syncFailed': '同步失败: {error}',
