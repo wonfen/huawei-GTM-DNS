@@ -26,9 +26,10 @@ type RecordSet struct {
 	Records   []string `json:"records"`
 	Status    string   `json:"status"`
 	Line      string   `json:"line"`
-	Weight    *int     `json:"weight"`
-	CreatedAt string   `json:"created_at"`
-	UpdatedAt string   `json:"updated_at"`
+	Weight      *int     `json:"weight"`
+	CreatedAt   string   `json:"created_at"`
+	UpdatedAt   string   `json:"updated_at"`
+	Description string   `json:"description,omitempty"`
 }
 
 type RecordSetListResponse struct {
@@ -41,8 +42,9 @@ type UpdateRecordSetRequest struct {
 	Type    string   `json:"type,omitempty"`
 	TTL     int      `json:"ttl,omitempty"`
 	Records []string `json:"records,omitempty"`
-	Status  string   `json:"status,omitempty"`
-	Weight  *int     `json:"weight,omitempty"`
+	Status      string  `json:"status,omitempty"`
+	Weight      *int    `json:"weight,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 type CreateRecordSetRequest struct {
@@ -51,8 +53,9 @@ type CreateRecordSetRequest struct {
 	TTL     int      `json:"ttl,omitempty"`
 	Records []string `json:"records,omitempty"`
 	Line    string   `json:"line,omitempty"`
-	Weight  *int     `json:"weight,omitempty"`
-	Status  string   `json:"status,omitempty"`
+	Weight      *int     `json:"weight,omitempty"`
+	Status      string   `json:"status,omitempty"`
+	Description string   `json:"description,omitempty"`
 }
 
 type CreateZoneRequest struct {

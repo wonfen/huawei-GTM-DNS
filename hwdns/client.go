@@ -111,6 +111,10 @@ func (c *Client) CreateRecordSet(ctx context.Context, zoneID string, req dnsprov
 	return toProviderRecordSet(resp), nil
 }
 
+// SyncsRecordDescription reports that Huawei's ListRecordSets returns the
+// recordset description, so sync treats it as authoritative (overwrites local).
+func (c *Client) SyncsRecordDescription() bool { return true }
+
 func (c *Client) get(ctx context.Context, path string, out any) error {
 	return c.do(ctx, http.MethodGet, path, nil, out)
 }

@@ -14,13 +14,14 @@ const DEFAULTS = {
   dns_weight: true,
   created_at: false,
   updated_at: false,
+  description: false,
 };
 
 export type ColVisKeys = keyof typeof DEFAULTS;
 
 const COL_KEYS: ColVisKeys[] = [
   'probes', 'name', 'records', 'type', 'ttl', 'line',
-  'status', 'health', 'dns_weight', 'created_at', 'updated_at',
+  'status', 'health', 'dns_weight', 'created_at', 'updated_at', 'description',
 ];
 
 export function getColLabels(): Record<ColVisKeys, string> {

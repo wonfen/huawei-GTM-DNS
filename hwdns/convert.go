@@ -23,6 +23,7 @@ func toProviderRecordSet(r RecordSet) dnsprovider.RecordSet {
 		ID: r.ID, ZoneID: r.ZoneID, Name: r.Name, Type: r.Type,
 		TTL: r.TTL, Records: r.Records, Status: r.Status, Line: r.Line,
 		Weight: r.Weight, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
+		Description: r.Description,
 	}
 }
 
@@ -38,6 +39,7 @@ func fromProviderUpdateReq(req dnsprovider.UpdateRecordSetRequest) UpdateRecordS
 	return UpdateRecordSetRequest{
 		Name: req.Name, Type: req.Type, TTL: req.TTL,
 		Records: req.Records, Status: req.Status, Weight: req.Weight,
+		Description: req.Description,
 	}
 }
 
@@ -45,6 +47,7 @@ func fromProviderCreateReq(req dnsprovider.CreateRecordSetRequest) CreateRecordS
 	return CreateRecordSetRequest{
 		Name: req.Name, Type: req.Type, TTL: req.TTL, Records: req.Records,
 		Line: req.Line, Weight: req.Weight, Status: req.Status,
+		Description: req.Description,
 	}
 }
 
