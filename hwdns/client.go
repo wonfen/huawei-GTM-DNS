@@ -10,12 +10,18 @@ import (
 	"time"
 
 	"gtm-dns/internal/service/dnsprovider"
+
+	"golang.org/x/time/rate"
 )
 
 type Client struct {
 	endpoint   string
 	signer     *Signer
 	httpClient *http.Client
+	// limiter, when non-nil, throttles every outbound request to stay under
+	// Huawei's per-user API rate limit (APIGW.0308 / HTTP 429). nil = unthrottled
+	// (tests and any caller that opts out).
+	limiter *rate.Limiter
 }
 
 func NewClient(ak, sk, endpoint string) *Client {
@@ -24,6 +30,13 @@ func NewClient(ak, sk, endpoint string) *Client {
 		signer:     NewSigner(ak, sk),
 		httpClient: &http.Client{Timeout: 15 * time.Second},
 	}
+}
+
+// WithLimiter attaches a shared rate limiter (typically one per Huawei account)
+// and returns the client for chaining. do() blocks on it before each request.
+func (c *Client) WithLimiter(l *rate.Limiter) *Client {
+	c.limiter = l
+	return c
 }
 
 const pageSize = 500
@@ -133,6 +146,14 @@ func (c *Client) do(ctx context.Context, method, path string, in, out any) error
 		var err error
 		bodyBytes, err = json.Marshal(in)
 		if err != nil {
+			return err
+		}
+	}
+
+	// Throttle to Huawei's per-user API rate limit before spending a request.
+	// Wait blocks until a token is free or ctx is cancelled/expired.
+	if c.limiter != nil {
+		if err := c.limiter.Wait(ctx); err != nil {
 			return err
 		}
 	}
