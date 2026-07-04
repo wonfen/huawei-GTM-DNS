@@ -221,6 +221,7 @@ const en: Record<string, string> = {
   'zones.deleteFailed': 'Delete failed: {error}',
   'zones.deleteConfirm': 'Delete zone "{name}"? If it still has records, Huawei Cloud will reject this operation.',
   'zones.backToZones': '\u2190 Zones',
+  'zones.mirrorBadge': 'Mirrored/read-only',
 
   // Records
   'records.newGroup': '+ New Group',
@@ -458,6 +459,7 @@ const en: Record<string, string> = {
   'search.replace.skipReason.ipNotInRecord': 'Record does not contain that IP',
   'search.replace.skipReason.crossAccount': 'Record belongs to another account',
   'search.replace.skipReason.recordNotFound': 'Record no longer exists',
+  'search.replace.skipReason.mirrorLocked': 'Secondary zone is read-only (mirrored)',
   'search.replace.resyncZone': 'Resync zone',
   'search.replace.rePush': 'Re-push failed ({n})',
 
@@ -559,6 +561,10 @@ const en: Record<string, string> = {
   'associations.syncTitle': 'Sync Report',
   'associations.addSecondaryTitle': 'Add Secondary Zone',
   'associations.reportEmpty': 'No member reports',
+  'associations.mirrorReadonlyBanner': 'This zone is the secondary of association "{name}" — records are mirrored from the primary zone and read-only here.',
+  'associations.mirrorReadonlyBannerNoLink': 'This zone is mirrored from an association\'s primary zone and is read-only.',
+  'associations.goToPrimary': 'Go to primary zone to edit →',
+  'associations.mirrorLockedToast': 'This zone is a secondary in an association — edit it from the primary zone instead',
 
   // Import from Huawei
   'import.button': 'Import from Huawei',

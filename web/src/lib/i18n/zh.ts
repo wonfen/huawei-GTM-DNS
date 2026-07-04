@@ -221,6 +221,7 @@ const zh: Record<string, string> = {
   'zones.deleteFailed': '删除失败: {error}',
   'zones.deleteConfirm': '删除域名"{name}"？如果该域名下仍有解析记录，华为云将拒绝此操作。',
   'zones.backToZones': '\u2190 Zone 列表',
+  'zones.mirrorBadge': '镜像/只读',
 
   // Records
   'records.newGroup': '+ 新建组',
@@ -458,6 +459,7 @@ const zh: Record<string, string> = {
   'search.replace.skipReason.ipNotInRecord': '记录不含该 IP',
   'search.replace.skipReason.crossAccount': '记录属于其他账户',
   'search.replace.skipReason.recordNotFound': '记录已不存在',
+  'search.replace.skipReason.mirrorLocked': '从 Zone 只读（镜像）',
   'search.replace.resyncZone': '重新同步 zone',
   'search.replace.rePush': '重新推送失败项 ({n})',
 
@@ -559,6 +561,10 @@ const zh: Record<string, string> = {
   'associations.syncTitle': '同步报告',
   'associations.addSecondaryTitle': '添加从 Zone',
   'associations.reportEmpty': '暂无成员报告',
+  'associations.mirrorReadonlyBanner': '此 Zone 是关联组「{name}」的从 Zone，记录由主 Zone 镜像，只读。',
+  'associations.mirrorReadonlyBannerNoLink': '此 Zone 由关联组的主 Zone 镜像，只读。',
+  'associations.goToPrimary': '前往主 Zone 编辑 →',
+  'associations.mirrorLockedToast': '此 Zone 为关联组从 Zone，编辑请到主 Zone 进行',
 
   // Import from Huawei
   'import.button': '从华为云导入',

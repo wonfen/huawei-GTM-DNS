@@ -4,6 +4,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [tailwindcss(), sveltekit()],
+  ssr: {
+    noExternal: ['@tanstack/query-core'],
+  },
   server: {
     proxy: {
       '/api': 'http://localhost:8080',
