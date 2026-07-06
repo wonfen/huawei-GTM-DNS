@@ -190,6 +190,7 @@ const zh: Record<string, string> = {
   // Zones
   'zones.title': 'DNS Zone 列表',
   'zones.syncFromHuawei': '从华为云同步',
+  'zones.syncFromPowerDNS': 'PowerDNS 同步',
   'zones.syncing': '同步中...',
   'zones.sync': '同步',
   'zones.loadingZones': '加载 Zone 中...',
@@ -559,7 +560,7 @@ const zh: Record<string, string> = {
   'associations.loadError': '错误：{error}',
   'associations.account': '账户',
   'associations.noMembers': '暂无成员',
-  'associations.syncConfirm': '同步关联组"{name}"？将把主 Zone 的所有记录镜像到从 Zone（含删除操作）。确认继续？',
+  'associations.syncConfirm': '同步关联组"{name}"？将只同步主 Zone 与从 Zone 的差异（包含待删除项）。确认继续？',
   'associations.previewTitle': '预览差异',
   'associations.syncTitle': '同步报告',
   'associations.addSecondaryTitle': '添加从 Zone',

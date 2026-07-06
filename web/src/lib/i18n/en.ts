@@ -190,6 +190,7 @@ const en: Record<string, string> = {
   // Zones
   'zones.title': 'DNS Zones',
   'zones.syncFromHuawei': 'Sync from Huawei',
+  'zones.syncFromPowerDNS': 'Sync PowerDNS',
   'zones.syncing': 'Syncing...',
   'zones.sync': 'Sync',
   'zones.loadingZones': 'Loading zones...',
@@ -559,7 +560,7 @@ const en: Record<string, string> = {
   'associations.loadError': 'Error: {error}',
   'associations.account': 'Account',
   'associations.noMembers': 'No members',
-  'associations.syncConfirm': 'Sync association "{name}"? This will mirror all records from the primary zone to secondary zones (including deletions). Continue?',
+  'associations.syncConfirm': 'Sync association "{name}"? Only differences between the primary and secondary zones will be applied, including pending deletions. Continue?',
   'associations.previewTitle': 'Preview Diff',
   'associations.syncTitle': 'Sync Report',
   'associations.addSecondaryTitle': 'Add Secondary Zone',
