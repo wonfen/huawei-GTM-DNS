@@ -186,6 +186,7 @@ const en: Record<string, string> = {
   'lines.Dianxin': 'China Telecom',
   'lines.Liantong': 'China Unicom',
   'lines.Yidong': 'China Mobile',
+  'lines.Abroad': 'Overseas',
 
   // Zones
   'zones.title': 'DNS Zones',

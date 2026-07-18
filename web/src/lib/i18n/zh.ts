@@ -186,6 +186,7 @@ const zh: Record<string, string> = {
   'lines.Dianxin': '电信',
   'lines.Liantong': '联通',
   'lines.Yidong': '移动',
+  'lines.Abroad': '海外',
 
   // Zones
   'zones.title': 'DNS Zone 列表',
