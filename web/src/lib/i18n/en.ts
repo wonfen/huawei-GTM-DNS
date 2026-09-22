@@ -248,6 +248,7 @@ const en: Record<string, string> = {
   'records.weightPlaceholder': 'optional',
   'records.descriptionPlaceholder': 'Remark (optional, max 255)',
   'records.pdnsWeightHint': 'Records sharing a name, type and line form one weighted set; the matched record answers all its IPs together. Keep TTL at 60.',
+  'records.pdnsMixedHint': 'A weighted CNAME joins the weighted A/AAAA groups of its name and line: the client hash picks one group, and clients landing on the CNAME group are redirected for every query type. Once a name has a weighted CNAME, every CNAME record and every enabled A/AAAA record at that name must carry a weight (a paused A/AAAA may wait until it is enabled); an unweighted CNAME stays an exclusive plain CNAME.',
   'records.loadingRecords': 'Loading records...',
   'records.loadFailed': 'Failed to load records',
   'records.grouped': 'Grouped',

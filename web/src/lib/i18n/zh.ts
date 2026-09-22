@@ -248,6 +248,7 @@ const zh: Record<string, string> = {
   'records.weightPlaceholder': '可选',
   'records.descriptionPlaceholder': '备注（可选，最长 255）',
   'records.pdnsWeightHint': '同名同类型同线路的多条记录构成一组加权解析，命中的记录整组 IP 一起返回；TTL 建议保持 60。',
+  'records.pdnsMixedHint': '带权重的 CNAME 记录会加入同名同线路的加权 A/AAAA 组：按客户端哈希选组，命中 CNAME 组的客户端所有类型查询都被重定向。一旦某个名字有带权重的 CNAME，该名字下的 CNAME 记录和启用中的 A/AAAA 记录都必须带权重（暂停的 A/AAAA 可以先不填，启用前补上）；不带权重的 CNAME 仍是独占的普通 CNAME。',
   'records.loadingRecords': '加载记录中...',
   'records.loadFailed': '加载记录失败',
   'records.grouped': '已分组',
