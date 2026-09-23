@@ -146,7 +146,7 @@ stateDiagram-v2
 - 一旦某个名字有了带权重的 CNAME，这个名字下的 CNAME 记录和启用中的 A/AAAA 记录都必须带权重（未带权重的启用记录请先编辑加上权重，或删除；暂停中的 A/AAAA 可以先不填，启用前补上——这也是把「暂停的 A + 普通 CNAME」迁移成混合权重的做法：先给 CNAME 填权重，再给 A 填）。
 - 不填权重的 CNAME 仍是普通 CNAME：启用时要求同名其它记录都处于暂停状态。
 - 暂停/删除带权重的 CNAME 会把流量全部交还给地址组；给 CNAME 去掉权重相当于把它变成普通 CNAME，同样受独占规则限制。
-- 同名同时有 A 和 AAAA 加权记录时，请让两者每条线路的权重总和相等，否则 IPv6 与 IPv4 客户端命中 CNAME 的比例会不一致。
+- 同名同时有 A、AAAA 和带权重的 CNAME 时，先按客户端决定「走 CNAME 还是走地址」：CNAME 的权重和该线路上全部地址记录（A 加 AAAA）的权重一起分；走地址的客户端查 A 在 A 记录里按权重选，查 AAAA 在 AAAA 记录里选，双栈客户端两种地址都拿到。加上 AAAA 会摊薄 CNAME 的份额，想保持比例就把 CNAME 权重相应调高。
 
 节点侧需要部署支持 `isp_route_mixed` / `weighted_mixed` 的 `isp_routes.lua`。
 
